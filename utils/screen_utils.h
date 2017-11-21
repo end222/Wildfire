@@ -7,3 +7,5 @@
 void clear_screen();
 
 void welcome();
+
+void new_line();
