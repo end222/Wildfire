@@ -10,5 +10,5 @@ void kernel_main(void){
 	clear_screen();
 	welcome();
 	new_line();
-	welcome();
+	print_text("login: ",0x07);
 }

@@ -30,19 +30,42 @@ void clear_screen(){
 	screen_location = 0;
 }
 
-void welcome(){
-	const char *welcome_text = "Welcome to Wildfire Project";
-	int j = 0;
+void print_text(const char *text, uint8_t attributes){
+	int i = 0;
 
-        // Write text from the welcome_text string
+        // Write text from the text string
 
-        while(welcome_text[j] != '\0'){
-                video_ptr[screen_location] = welcome_text[j];
-                video_ptr[screen_location+1] = 0x47;
+        while(text[i] != '\0'){
+		if(text[i] == '\n'){
+			new_line();
+		}
+		else{
+                	video_ptr[screen_location] = text[i];
+                	video_ptr[screen_location+1] = attributes;
 
-                screen_location += 2;
-                j += 1;
+                	screen_location += 2;
+		}
+                i += 1;
         }
+}
+
+void welcome(){
+	char *welcome_text = "W";
+	print_text(welcome_text,0x04);
+	welcome_text = "I";
+	print_text(welcome_text,0x0C);
+	welcome_text = "L";
+	print_text(welcome_text,0x0A);
+	welcome_text = "D";
+	print_text(welcome_text,0x02);
+	welcome_text = "F";
+	print_text(welcome_text,0x0B);
+	welcome_text = "I";
+	print_text(welcome_text,0x09);
+	welcome_text = "R";
+	print_text(welcome_text,0x01);
+	welcome_text = "E\n";
+	print_text(welcome_text,0x05);
 }
 
 void new_line(){
