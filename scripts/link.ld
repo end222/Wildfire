@@ -4,12 +4,30 @@
  *  File: scripts/link.ld
  */
 
-OUTPUT_FORMAT(elf32-i386)
 ENTRY(_start)
+
 SECTIONS
- {
-   . = 0x100000;
-   .text : { *(.text) }
-   .data : { *(.data) }
-   .bss  : { *(.bss)  }
- }
+{
+   	. = 1M;
+   	.text BLOCK(4k) : ALIGN(4K)
+   	{
+		*(.multiboot)
+   		*(.text)
+   	}
+   	
+	.rodata BLOCK(4k) : ALIGN(4K)
+	{
+		*(.rodata)
+	}
+
+	.data BLOCK(4k) : ALIGN(4k)
+	{
+		*(.data)
+	}
+
+   	.bss BLOCK(4k) : ALIGN(4k)
+	{
+		*(COMMON)
+		*(.bss) 
+	}
+}
