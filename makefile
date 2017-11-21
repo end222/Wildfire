@@ -8,9 +8,9 @@ CC = gcc
 LD = ld
 
 main: kernel/kernel.asm kernel/kernel.c scripts/link.ld
-	nasm -f elf32 kernel/kernel.asm -o out/kasm.o
-	gcc -m32 -c kernel/kernel.c -o out/kc.o
-	ld -m elf_i386 -T scripts/link.ld -o out/kernel out/kasm.o out/kc.o
+	as --32 kernel/kernel.asm -o out/boot.o
+	gcc -m32 -c kernel/kernel.c -o out/kernel.o
+	gcc -m32 -T scripts/link.ld -o out/kernel.bin -ffreestanding -O2 -nostdlib out/boot.o out/kernel.o -lgcc
 
 clean: 
 	rm out/*

@@ -5,7 +5,7 @@
  */
 
 OUTPUT_FORMAT(elf32-i386)
-ENTRY(start)
+ENTRY(_start)
 SECTIONS
  {
    . = 0x100000;
