@@ -14,6 +14,20 @@ uint8_t* video_ptr = (uint8_t*)0xB8000;
 // Variable to control the location in the screen
 int screen_location = 0; 
 
+void vertical_scroll_up(){
+	int i = 0;
+	while(i < SCREEN_BYTE_SIZE - 160){
+		video_ptr[i] = video_ptr[i+160];
+		i++;
+	}
+	while(i < SCREEN_BYTE_SIZE){
+		video_ptr[i] = ' ';
+		video_ptr[i+1] = 0x07;
+		i += 2;
+	}
+	screen_location -= 160;
+}
+
 void clear_screen(){
         char clear = ' ';
         while(screen_location < SCREEN_BYTE_SIZE){
@@ -61,6 +75,11 @@ void welcome(){
 }
 
 void new_line(){
+	// Check if screen_location points to the latest line. If it does scroll 1 line up
+	if(screen_location > SCREEN_BYTE_SIZE - 160){
+		vertical_scroll_up();
+	}
+
 	// Get to the beginning of the current line
 	screen_location = screen_location / 160 * 160;
 	

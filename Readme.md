@@ -8,7 +8,7 @@ $ qemu-system-i386 -kernel out/kernel.bin
 
 Status of the project:
 - Booting
-- Printing info in the screen(still needs improvement)
+- Printing info in the screen, including '\n' character and also vertical scrolling if the screen gets filled up
 
 Next tasks:
-- Improve printing info into the screen (new lines and scrolling)
+- Keyboard interruptions

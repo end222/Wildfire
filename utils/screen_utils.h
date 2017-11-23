@@ -7,6 +7,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+void vertical_scroll_up();
+
 void clear_screen();
 
 void print_text(const char *text, uint8_t attributes);
