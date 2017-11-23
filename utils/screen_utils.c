@@ -50,22 +50,14 @@ void print_text(const char *text, uint8_t attributes){
 }
 
 void welcome(){
-	char *welcome_text = "W";
-	print_text(welcome_text,0x04);
-	welcome_text = "I";
-	print_text(welcome_text,0x0C);
-	welcome_text = "L";
-	print_text(welcome_text,0x0A);
-	welcome_text = "D";
-	print_text(welcome_text,0x02);
-	welcome_text = "F";
-	print_text(welcome_text,0x0B);
-	welcome_text = "I";
-	print_text(welcome_text,0x09);
-	welcome_text = "R";
-	print_text(welcome_text,0x01);
-	welcome_text = "E\n";
-	print_text(welcome_text,0x05);
+	print_text("W",0x04);
+	print_text("I",0x0C);
+	print_text("L",0x0A);
+	print_text("D",0x02);
+	print_text("F",0x0B);
+	print_text("I",0x09);
+	print_text("R",0x01);
+	print_text("E",0x05);
 }
 
 void new_line(){
